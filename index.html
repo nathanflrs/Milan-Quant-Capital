@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Milan Quant Capital</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Milan Quant Capital — AI-driven quantitative fund automating multi-strategy trading on US equities." />
+  <meta name="description" content="Milan Quant Capital — AI-driven quantitative project automating multi-strategy trading on US equities with momentum, earnings and AI-based components." />
 
   <style>
     :root {
@@ -69,14 +69,20 @@
       width: 40px;
       height: 40px;
       border-radius: 14px;
-      background: radial-gradient(circle at 0 0, #38bdf8, #1d4ed8 50%, #020617 100%);
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 10px 35px rgba(56,189,248,0.35);
-      color: white;
-      font-weight: 700;
-      font-size: 20px;
+      overflow: hidden;
+    }
+
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      display: block;
     }
 
     .logo-text-title {
@@ -458,7 +464,9 @@
   <div class="page">
     <header>
       <div class="logo-block">
-        <div class="logo-mark">M</div>
+        <div class="logo-mark">
+          <img src="mqc-logo.png" alt="Milan Quant Capital logo" />
+        </div>
         <div>
           <div class="logo-text-title">Milan Quant Capital</div>
           <div class="logo-text-sub">AI-driven systematic trading project</div>
@@ -468,7 +476,8 @@
         <a href="#about">About</a>
         <a href="#strategies">Strategies</a>
         <a href="#technology">Technology</a>
-        <a href="#status">Status & Roadmap</a>
+        <a href="#status">Status &amp; Roadmap</a>
+        <a href="#performance">Performance</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -495,7 +504,7 @@
 
           <p class="hero-meta">
             Currently running in <span>paper trading mode</span>, with the ambition to evolve into a fully
-            operational quantitative fund.
+            operational quantitative fund over time.
           </p>
 
           <div class="hero-actions">
@@ -553,22 +562,21 @@
     <section id="about">
       <div class="section-header">
         <h2 class="section-title">About</h2>
-        <div class="section-kicker">Origin & vision</div>
+        <div class="section-kicker">Origin &amp; vision</div>
       </div>
       <div class="section-card">
         <p>
-          Milan Quant Capital was founded with a simple idea: combine quantitative research, automation and
-          machine learning into a single, cohesive trading engine.
+          Milan Quant Capital was founded with a simple idea: bring quantitative research, automation and machine
+          learning together in a single, cohesive trading engine.
         </p>
         <p>
-          The project started after my experience at Bocconi’s Summer School in Finance and Global Economics,
-          where I deepened my interest in systematic trading, risk management and financial markets. Since then,
-          I’ve been developing MQC as a live, evolving framework to test and deploy professional-grade strategies
-          on US equities.
+          The project started after my experience at Bocconi’s Summer School in Finance and Global Economics, where
+          I deepened my interest in systematic trading, risk management and financial markets. Since then, I’ve been
+          developing MQC as a live, evolving framework to test and deploy professional-style strategies on US equities.
         </p>
         <p>
-          The goal is not only to design profitable strategies, but to build the full infrastructure around them:
-          data pipelines, risk controls, trade logs, monitoring and eventually scalability to external capital.
+          The goal is not only to design trading rules, but to build the full infrastructure around them: data pipelines,
+          risk controls, trade logs, monitoring and, eventually, the ability to scale to external capital.
         </p>
       </div>
     </section>
@@ -576,8 +584,8 @@
     <!-- STRATEGIES + TECHNOLOGY -->
     <section id="strategies">
       <div class="section-header">
-        <h2 class="section-title">Strategies & Stack</h2>
-        <div class="section-kicker">How MQC trades & runs</div>
+        <h2 class="section-title">Strategies &amp; Stack</h2>
+        <div class="section-kicker">How MQC trades &amp; runs</div>
       </div>
 
       <div class="grid-2">
@@ -585,8 +593,8 @@
         <div class="section-card">
           <h3 style="font-size:15px; margin-bottom:6px;">Live Strategies</h3>
           <p>
-            The current framework runs multiple systematic strategies in parallel, all built around clear rules
-            and explicit risk constraints.
+            The current framework runs several systematic strategies in parallel, all built around clear rules and explicit
+            risk constraints.
           </p>
           <ul class="list">
             <li>
@@ -603,28 +611,28 @@
               <div class="list-item-title">Earnings Play</div>
               <div class="list-item-sub">
                 Event-driven entries around earnings dates to capture post-announcement drift and volatility,
-                with strict risk limits per trade.
+                with predefined risk per trade.
               </div>
             </li>
             <li>
               <div class="list-item-title">Predictive AI Filter</div>
               <div class="list-item-sub">
-                Model-based probability filter that screens entry signals and blocks low-conviction trades,
-                acting as an additional layer of validation on top of the rules.
+                A model-based probability filter that screens entry signals and blocks low-conviction trades,
+                adding an extra layer of validation on top of the rules.
               </div>
             </li>
             <li>
               <div class="list-item-title">ATR-based Risk Management &amp; Sizing</div>
               <div class="list-item-sub">
-                Position sizing driven by ATR, per-trade risk caps and portfolio-level constraints to keep
-                exposure under control and adapt to volatility.
+                Position sizing driven by ATR, per-trade risk caps and portfolio-level limits to keep exposure
+                aligned with volatility.
               </div>
             </li>
             <li>
               <div class="list-item-title">Rebalancing</div>
               <div class="list-item-sub">
-                Automatic trimming of oversized positions back to target allocation to avoid concentration risk
-                over time.
+                Automatic trimming of oversized positions back to target allocation to avoid excessive
+                concentration.
               </div>
             </li>
             <li>
@@ -648,7 +656,7 @@
             <li>
               <div class="list-item-title">Execution &amp; Data</div>
               <div class="list-item-sub">
-                Live trading via Alpaca (paper environment) and market data via Yahoo Finance and other APIs.
+                Paper-trading execution via Alpaca and market data via Yahoo Finance and other APIs.
               </div>
             </li>
             <li>
@@ -661,7 +669,7 @@
             <li>
               <div class="list-item-title">Machine Learning</div>
               <div class="list-item-sub">
-                Machine learning components (e.g. gradient boosting-style models) used as predictive filters on
+                Machine learning components (such as gradient-boosting-style models) used as predictive filters on
                 top of rule-based strategies.
               </div>
             </li>
@@ -687,7 +695,7 @@
     <!-- STATUS & ROADMAP -->
     <section id="status">
       <div class="section-header">
-        <h2 class="section-title">Status & Roadmap</h2>
+        <h2 class="section-title">Status &amp; Roadmap</h2>
         <div class="section-kicker">Where MQC stands and where it’s going</div>
       </div>
 
@@ -722,7 +730,7 @@
             <li class="roadmap-item">
               <div class="roadmap-bullet">1</div>
               <div>
-                <strong>Extend and strengthen the predictive AI engine.</strong><br />
+                <strong>Strengthen the predictive AI engine.</strong><br />
                 More features, deeper training and robustness checks across assets and regimes.
               </div>
             </li>
@@ -753,11 +761,32 @@
       </div>
     </section>
 
+    <!-- PERFORMANCE -->
+    <section id="performance">
+      <div class="section-header">
+        <h2 class="section-title">Performance</h2>
+        <div class="section-kicker">Paper-trading equity curve</div>
+      </div>
+
+      <div class="section-card">
+        <p style="margin-bottom:10px;">
+          The chart below illustrates the evolution of the paper-trading portfolio equity over the recent period,
+          based on live execution logic and real-time market data.
+        </p>
+        <div style="margin-top:12px; height:320px;">
+          <canvas id="equityChart" style="width:100%; height:100%;"></canvas>
+        </div>
+        <p style="margin-top:10px; font-size:11px; color:#9ca3af;">
+          Figures are based on a simulated paper-trading environment and do not represent live or audited results.
+        </p>
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact">
       <div class="section-header">
         <h2 class="section-title">Contact</h2>
-        <div class="section-kicker">Collaboration & discussion</div>
+        <div class="section-kicker">Collaboration &amp; discussion</div>
       </div>
       <div class="section-card">
         <p>
@@ -779,10 +808,7 @@
           <li>
             <div class="list-item-title">Email</div>
             <div class="list-item-sub">
-              <a href="mailto:your.email@example.com">your.email@example.com</a>
-              <span style="display:block; font-size:11px; margin-top:2px;">
-                (update with your preferred contact email)
-              </span>
+              <a href="mailto:nathan.floiras@gmail.com">nathan.floiras@gmail.com</a>
             </div>
           </li>
         </ul>
@@ -791,13 +817,97 @@
 
     <footer>
       <div>© <span id="year"></span> Milan Quant Capital. All rights reserved.</div>
-      <div>Independent quantitative research & systematic trading project.</div>
+      <div>Independent quantitative research &amp; systematic trading project.</div>
     </footer>
   </div>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
     // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Equity curve (approximation based on current paper-trading graph – replace with real data later if needed)
+    const equityLabels = [
+      "Jul 11", "Jul 25", "Aug 10", "Aug 25",
+      "Sep 10", "Sep 25", "Oct 10", "Oct 25",
+      "Nov 10", "Nov 13"
+    ];
+
+    const equityData = [
+      98000, 106500, 99200, 99500,
+      100800, 102500, 106000, 108800,
+      109200, 109900
+    ];
+
+    const ctx = document.getElementById("equityChart").getContext("2d");
+
+    const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+    gradient.addColorStop(0, "rgba(250, 204, 21, 0.45)");
+    gradient.addColorStop(1, "rgba(15, 23, 42, 0)");
+
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: equityLabels,
+        datasets: [{
+          label: "Portfolio equity (paper)",
+          data: equityData,
+          fill: true,
+          backgroundColor: gradient,
+          borderColor: "rgba(250, 204, 21, 1)",
+          borderWidth: 2,
+          pointRadius: 2.5,
+          pointHoverRadius: 4,
+          tension: 0.25
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: "index",
+          intersect: false
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const value = context.parsed.y || 0;
+                return " $" + value.toLocaleString();
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              color: "#9ca3af",
+              font: { size: 11 }
+            }
+          },
+          y: {
+            grid: {
+              color: "rgba(31, 41, 55, 0.7)"
+            },
+            ticks: {
+              color: "#9ca3af",
+              font: { size: 11 },
+              callback: function(value) {
+                return "$" + value / 1000 + "k";
+              }
+            }
+          }
+        }
+      }
+    });
   </script>
 </body>
 </html>

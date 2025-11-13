@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Milan Quant Capital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Milan Quant Capital — AI-driven quantitative fund automating multi-strategy trading on US equities." />
+
+  <style>
+    :root {
+      --bg: #030712;
+      --bg-alt: #050816;
+      --card: #0b1120;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-xl: 18px;
+      --radius-2xl: 26px;
+      --shadow-soft: 0 18px 55px rgba(0,0,0,0.55);
+      --shadow-subtle: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 35%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 0 0, #38bdf8, #1d4ed8 50%, #020617 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 35px rgba(56,189,248,0.35);
+      color: white;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .logo-text-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .logo-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.18s ease-out;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      background: radial-gradient(circle at top left, #0b1120 0, #020617 45%, #000 100%);
+      border-radius: var(--radius-2xl);
+      padding: 32px 24px 28px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148,163,184,0.12);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -120px;
+      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.15), transparent 55%);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 820px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.35);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34,197,94,0.16);
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .hero-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-meta span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      font-size: 13px;
+      padding: 7px 14px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      border-color: rgba(191,219,254,0.5);
+      color: white;
+      box-shadow: 0 12px 30px rgba(37,99,235,0.45);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.06);
+    }
+
+    .btn-ghost {
+      background: rgba(15,23,42,0.85);
+      border-color: rgba(148,163,184,0.45);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,1);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-right {
+      display: grid;
+      gap: 10px;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: rgba(15,23,42,0.9);
+      border-radius: var(--radius-xl);
+      padding: 10px 12px;
+      border: 1px solid rgba(30,64,175,0.55);
+      box-shadow: var(--shadow-subtle);
+      font-size: 11px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .chip {
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.35);
+      color: var(--muted);
+    }
+
+    .mini-label {
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.4);
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .section-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      padding: 18px 16px;
+      box-shadow: var(--shadow-subtle);
+      font-size: 14px;
+    }
+
+    .section-card p + p {
+      margin-top: 8px;
+    }
+
+    /* Two-column layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 820px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Lists */
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .list-item-title {
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .list-item-sub {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .tag-soft {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      margin-left: 6px;
+    }
+
+    /* Roadmap */
+    .roadmap-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .roadmap-item {
+      display: flex;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .roadmap-bullet {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo-block">
+        <div class="logo-mark">M</div>
+        <div>
+          <div class="logo-text-title">Milan Quant Capital</div>
+          <div class="logo-text-sub">AI-driven systematic trading project</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#strategies">Strategies</a>
+        <a href="#technology">Technology</a>
+        <a href="#status">Status & Roadmap</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Live paper-trading engine · US equities
+          </div>
+
+          <h1 class="hero-title">
+            AI-driven quantitative fund<br />
+            <span class="hero-highlight">automating multi-strategy trading</span> on US equities.
+          </h1>
+
+          <p class="hero-subtitle">
+            Milan Quant Capital is an independent quantitative project focused on building a fully automated
+            trading framework that combines momentum, earnings-driven and AI-based strategies within a robust,
+            risk-managed architecture.
+          </p>
+
+          <p class="hero-meta">
+            Currently running in <span>paper trading mode</span>, with the ambition to evolve into a fully
+            operational quantitative fund.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary">
+              Get in touch
+              <span>→</span>
+            </a>
+            <a href="#strategies" class="btn-ghost">
+              View live strategies
+            </a>
+          </div>
+
+          <p class="hero-note">
+            Built from scratch as a real-world platform to experiment with professional-grade systematic trading.
+          </p>
+        </div>
+
+        <div class="hero-right">
+          <div class="stat-row">
+            <div class="stat-card">
+              <div class="stat-label">Core focus</div>
+              <div class="stat-value">US Equities</div>
+              <div class="chip-row">
+                <span class="chip">Short-term momentum</span>
+                <span class="chip">Event-driven</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Architecture</div>
+              <div class="stat-value">Multi-strategy</div>
+              <div class="chip-row">
+                <span class="chip">Momentum</span>
+                <span class="chip">Earnings</span>
+                <span class="chip">AI filter</span>
+              </div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="mini-label">Engine status</div>
+            <div class="pill">
+              <span class="pill-dot"></span>
+              Paper trading · Real-time execution logic
+            </div>
+            <div class="chip-row" style="margin-top: 8px;">
+              <span class="chip">Python · Alpaca</span>
+              <span class="chip">pandas / NumPy</span>
+              <span class="chip">Machine learning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header">
+        <h2 class="section-title">About</h2>
+        <div class="section-kicker">Origin & vision</div>
+      </div>
+      <div class="section-card">
+        <p>
+          Milan Quant Capital was founded with a simple idea: combine quantitative research, automation and
+          machine learning into a single, cohesive trading engine.
+        </p>
+        <p>
+          The project started after my experience at Bocconi’s Summer School in Finance and Global Economics,
+          where I deepened my interest in systematic trading, risk management and financial markets. Since then,
+          I’ve been developing MQC as a live, evolving framework to test and deploy professional-grade strategies
+          on US equities.
+        </p>
+        <p>
+          The goal is not only to design profitable strategies, but to build the full infrastructure around them:
+          data pipelines, risk controls, trade logs, monitoring and eventually scalability to external capital.
+        </p>
+      </div>
+    </section>
+
+    <!-- STRATEGIES + TECHNOLOGY -->
+    <section id="strategies">
+      <div class="section-header">
+        <h2 class="section-title">Strategies & Stack</h2>
+        <div class="section-kicker">How MQC trades & runs</div>
+      </div>
+
+      <div class="grid-2">
+        <!-- Strategies -->
+        <div class="section-card">
+          <h3 style="font-size:15px; margin-bottom:6px;">Live Strategies</h3>
+          <p>
+            The current framework runs multiple systematic strategies in parallel, all built around clear rules
+            and explicit risk constraints.
+          </p>
+          <ul class="list">
+            <li>
+              <div class="list-item-title">
+                Trend &amp; Momentum
+                <span class="tag-soft">Core</span>
+              </div>
+              <div class="list-item-sub">
+                EMA-based trend filters (20 / 50 / 200) combined with “clean breakout” momentum setups to
+                focus on strong, directional moves only.
+              </div>
+            </li>
+            <li>
+              <div class="list-item-title">Earnings Play</div>
+              <div class="list-item-sub">
+                Event-driven entries around earnings dates to capture post-announcement drift and volatility,
+                with strict risk limits per trade.
+              </div>
+            </li>
+            <li>
+              <div class="list-item-title">Predictive AI Filter</div>
+              <div class="list-item-sub">
+                Model-based probability filter that screens entry signals and blocks low-conviction trades,
+                acting as an additional layer of validation on top of the rules.
+              </div>
+            </li>
+            <li>
+              <div class="list-item-title">ATR-based Risk Management &amp; Sizing</div>
+              <div class="list-item-sub">
+                Position sizing driven by ATR, per-trade risk caps and portfolio-level constraints to keep
+                exposure under control and adapt to volatility.
+              </div>
+            </li>
+            <li>
+              <div class="list-item-title">Rebalancing</div>
+              <div class="list-item-sub">
+                Automatic trimming of oversized positions back to target allocation to avoid concentration risk
+                over time.
+              </div>
+            </li>
+            <li>
+              <div class="list-item-title">Pairs Arbitrage</div>
+              <div class="list-item-sub">
+                Statistical arbitrage on selected equity pairs (e.g. MSFT–AAPL, XOM–CVX, META–GOOGL) using
+                spread z-scores, beta estimation and capital allocation constraints.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Technology -->
+        <div class="section-card" id="technology">
+          <h3 style="font-size:15px; margin-bottom:6px;">Technology &amp; Infrastructure</h3>
+          <p>
+            Milan Quant Capital is built as a fully automated Python-based stack designed to be transparent,
+            modular and extensible.
+          </p>
+          <ul class="list">
+            <li>
+              <div class="list-item-title">Execution &amp; Data</div>
+              <div class="list-item-sub">
+                Live trading via Alpaca (paper environment) and market data via Yahoo Finance and other APIs.
+              </div>
+            </li>
+            <li>
+              <div class="list-item-title">Strategy Engine</div>
+              <div class="list-item-sub">
+                Strategy logic implemented with pandas / NumPy, including filters, signals, ATR, position sizing
+                and portfolio state.
+              </div>
+            </li>
+            <li>
+              <div class="list-item-title">Machine Learning</div>
+              <div class="list-item-sub">
+                Machine learning components (e.g. gradient boosting-style models) used as predictive filters on
+                top of rule-based strategies.
+              </div>
+            </li>
+            <li>
+              <div class="list-item-title">Monitoring &amp; Logs</div>
+              <div class="list-item-sub">
+                Telegram integration for real-time notifications, fills and heartbeats, plus detailed decision
+                and trade logs for post-trade analysis and research.
+              </div>
+            </li>
+            <li>
+              <div class="list-item-title">Risk &amp; Portfolio State</div>
+              <div class="list-item-sub">
+                Local portfolio tracking, exposure checks and capital allocation logic to keep the engine within
+                predefined risk boundaries.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATUS & ROADMAP -->
+    <section id="status">
+      <div class="section-header">
+        <h2 class="section-title">Status & Roadmap</h2>
+        <div class="section-kicker">Where MQC stands and where it’s going</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="section-card">
+          <h3 style="font-size:15px; margin-bottom:6px;">Current Status</h3>
+          <p>
+            The engine is currently running in paper trading mode, with real-time execution logic, live data
+            feeds and full logging enabled.
+          </p>
+          <ul class="list">
+            <li>
+              <div class="list-item-title">Live multi-strategy architecture</div>
+              <div class="list-item-sub">
+                Momentum, earnings, AI filter and pairs arbitrage components are already integrated into a single
+                framework.
+              </div>
+            </li>
+            <li>
+              <div class="list-item-title">Daily monitoring</div>
+              <div class="list-item-sub">
+                All decisions, orders and fills are tracked via Telegram and trade logs for review and
+                refinement.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <h3 style="font-size:15px; margin-bottom:6px;">Roadmap</h3>
+          <ul class="roadmap-list">
+            <li class="roadmap-item">
+              <div class="roadmap-bullet">1</div>
+              <div>
+                <strong>Extend and strengthen the predictive AI engine.</strong><br />
+                More features, deeper training and robustness checks across assets and regimes.
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="roadmap-bullet">2</div>
+              <div>
+                <strong>Deepen backtesting and stress tests.</strong><br />
+                Regime-based analysis, drawdown studies and parameter robustness.
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="roadmap-bullet">3</div>
+              <div>
+                <strong>Expand to cross-asset and cross-market strategies.</strong><br />
+                Beyond US equities, towards global indices, FX or other liquid instruments.
+              </div>
+            </li>
+            <li class="roadmap-item">
+              <div class="roadmap-bullet">4</div>
+              <div>
+                <strong>Prepare for external capital &amp; live deployment.</strong><br />
+                Hardening infrastructure, monitoring and governance for a potential transition beyond paper
+                trading.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Contact</h2>
+        <div class="section-kicker">Collaboration & discussion</div>
+      </div>
+      <div class="section-card">
+        <p>
+          If you’re interested in quantitative strategies, systematic trading or potential collaboration, feel
+          free to reach out.
+        </p>
+        <ul class="list" style="margin-top:10px;">
+          <li>
+            <div class="list-item-title">LinkedIn</div>
+            <div class="list-item-sub">
+              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+                Nathan Floiras
+              </a>
+              <span style="display:block; font-size:11px; margin-top:2px;">
+                (replace this link with your actual LinkedIn profile URL)
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="list-item-title">Email</div>
+            <div class="list-item-sub">
+              <a href="mailto:your.email@example.com">your.email@example.com</a>
+              <span style="display:block; font-size:11px; margin-top:2px;">
+                (update with your preferred contact email)
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Milan Quant Capital. All rights reserved.</div>
+      <div>Independent quantitative research & systematic trading project.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
